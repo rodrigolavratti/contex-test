@@ -1,15 +1,19 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 
-const CustomerForm = ({onSubmit}) => {
+import { CustomerContext } from "../contexts/customer";
+
+const CustomerForm = () => {
+
+    const {submit} = useContext(CustomerContext)
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("dados", {name, email})
+        console.log("Dados Components", {name, email})
 
-        onSubmit({name, email})
+        submit({name, email})
     }
 
     return (
